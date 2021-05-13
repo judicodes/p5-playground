@@ -8,7 +8,6 @@ function setup() {
 }
 
 function draw() {
-  // circles();
   lines();
 }
 
@@ -41,8 +40,4 @@ function lines() {
   const angle = map(mouseX * mouseY, 0, windowWidth * windowHeight, 0, 360);
   rotate(angle);
   line(0 - lineLengthInPx / 2, 0, 0 + lineLengthInPx / 2, 0);
-}
-
-function sleep(timeInMs) {
-  return new Promise(resolve => setTimeout(resolve, timeInMs));
 }
