@@ -11,21 +11,34 @@ function setup() {
   xStart = 0 - 450 / 2;
   xEnd = windowWidth + 450 / 2;
   x = xStart;
+  noLoop();
 }
 
 function draw() {
   colorMode(RGB);
   noStroke();
-  animateEclipse();
+  background(0);
+  texturedBackground();
+  drawMoon(500, canvasCenterX, canvasCenterY);
+  drawSun(450, canvasCenterX - 200, canvasCenterY + 50);
 }
 
-function animateEclipse() {
-  background(0);
-  drawMoon(500, canvasCenterX, canvasCenterY);
-  drawSun(450, x, canvasCenterY + 50);
-  x += 2;
-  if (x >= xEnd) {
-    x = xStart;
+function texturedBackground() {
+  fill(color(`rgba(191, 179, 143, 0.15)`));
+  strokeWeight(1);
+  const numPoints = 100000;
+
+  let minX = 0;
+  let minY = 0;
+  let maxX = Math.floor(windowWidth);
+  let maxY = Math.floor(windowHeight);
+  let x;
+  let y;
+  for (let i = 0; i < numPoints; i++) {
+    x = Math.floor(Math.random() * (maxX - minX)) + minX;
+    y = Math.floor(Math.random() * (maxY - minY)) + minY;
+    d = Math.floor(Math.random() * 3);
+    circle(x, y, d);
   }
 }
 
