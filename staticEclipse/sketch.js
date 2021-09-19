@@ -3,13 +3,17 @@ let canvasCenterY;
 let x;
 let xStart;
 let xEnd;
+const moonDiameter = 500;
+const sunDiameter = 450;
+const sunOffsetX = -200;
+const sunOffsetY = 50;
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
   canvasCenterX = windowWidth / 2;
   canvasCenterY = windowHeight / 2;
-  xStart = 0 - 450 / 2;
-  xEnd = windowWidth + 450 / 2;
+  xStart = 0 - sunDiameter / 2;
+  xEnd = windowWidth + sunDiameter / 2;
   x = xStart;
   noLoop();
 }
@@ -19,8 +23,8 @@ function draw() {
   noStroke();
   background(0);
   texturedBackground();
-  drawMoon(500, canvasCenterX, canvasCenterY);
-  drawSun(450, canvasCenterX - 200, canvasCenterY + 50);
+  drawMoon(moonDiameter, canvasCenterX, canvasCenterY);
+  drawSun(sunDiameter, canvasCenterX + sunOffsetX, canvasCenterY + sunOffsetY);
 }
 
 function texturedBackground() {
