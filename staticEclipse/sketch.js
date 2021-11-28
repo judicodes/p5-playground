@@ -3,10 +3,12 @@ let canvasCenterY;
 let x;
 let xStart;
 let xEnd;
-const moonDiameter = 500;
-const sunDiameter = 450;
-const sunOffsetX = -200;
+const moonDiameter = 300;
+const sunDiameter = 250;
+const sunOffsetX = -150;
 const sunOffsetY = 50;
+const centerOffsetX = 350;
+const centerOffsetY = 0;
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
@@ -23,12 +25,20 @@ function draw() {
   noStroke();
   background(0);
   texturedBackground();
-  drawMoon(moonDiameter, canvasCenterX, canvasCenterY);
-  drawSun(sunDiameter, canvasCenterX + sunOffsetX, canvasCenterY + sunOffsetY);
+  drawMoon(
+    moonDiameter,
+    canvasCenterX + centerOffsetX,
+    canvasCenterY + centerOffsetY
+  );
+  drawSun(
+    sunDiameter,
+    canvasCenterX + centerOffsetX + sunOffsetX,
+    canvasCenterY + centerOffsetY + sunOffsetY
+  );
 }
 
 function texturedBackground() {
-  fill(color(`rgba(191, 179, 143, 0.15)`));
+  fill(color(`rgba(191, 179, 143, 0.07)`));
   strokeWeight(1);
   const numPoints = 100000;
 
@@ -41,7 +51,7 @@ function texturedBackground() {
   for (let i = 0; i < numPoints; i++) {
     x = Math.floor(Math.random() * (maxX - minX)) + minX;
     y = Math.floor(Math.random() * (maxY - minY)) + minY;
-    d = Math.floor(Math.random() * 3);
+    d = Math.floor(Math.random() * 4.2);
     circle(x, y, d);
   }
 }
