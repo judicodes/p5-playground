@@ -1,15 +1,19 @@
-const curvePoints = 40;
+const canvasWidth = 2400;
+const canvasHeight = 1600;
+const curvePoints = 50;
+const maxDistortion = 50;
 const stepSize = 5;
+const lightBackground = "#e3ebef";
+const darkBackground = "#0d2c4f";
 let yAnchor = -150;
-
+6;
 let x = [];
 let y = [];
 
 function setup() {
-  const xIncrement = Math.round(windowWidth / curvePoints);
-  const maxDistortion = 30;
+  const xIncrement = Math.round(canvasWidth / curvePoints);
 
-  createCanvas(windowWidth, windowHeight);
+  createCanvas(canvasWidth, canvasHeight);
   x.push(0);
   y.push(yAnchor);
   for (let i = 1; i < curvePoints - 1; i++) {
@@ -17,12 +21,12 @@ function setup() {
     y.push(y[i - 1] + random(-maxDistortion, maxDistortion));
   }
 
-  x.push(windowWidth);
+  x.push(canvasWidth);
   y.push(yAnchor);
 
-  stroke(0, 30);
-  strokeWeight(0.75);
-  background(255);
+  stroke(130, 50);
+  strokeWeight(0.7);
+  background(lightBackground);
   noFill();
 }
 
@@ -35,13 +39,13 @@ function draw() {
     curveVertex(x[i], y[i] + yAnchor + random(-stepSize, stepSize));
   }
 
-  curveVertex(windowWidth, yAnchor);
+  curveVertex(canvasWidth, yAnchor);
 
   endShape();
 
   yAnchor += 5;
 
-  if (yAnchor >= windowHeight * 1.7) {
+  if (yAnchor >= canvasHeight * 1.7) {
     noLoop();
   }
 }
